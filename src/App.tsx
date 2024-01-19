@@ -1,7 +1,9 @@
+import Sections from "./pages/Sections";
+
 function App() {
   return (
     <div>
-    <h1>Restaurante</h1>
+   <Sections />
     </div>
   );
 }

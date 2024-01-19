@@ -1,0 +1,16 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+  
+body {
+    background-color: var(--bg-body);
+}
+
+:root {
+    --bg-body: #ecf0f1;
+    --bg-primary: #FDCA63;
+    --bg-secondary: #C5452D;
+}
