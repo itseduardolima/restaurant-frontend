@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import LogoRestaurant from "../assests/images/logo.png"
+import LogoRestaurant from "../assets/images/logo.png"
 
 const HeaderContainer = styled.div`
   background-color: var(--bg-primary);
