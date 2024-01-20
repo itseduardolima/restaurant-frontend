@@ -8,15 +8,10 @@ export const Container = styled.div`
 `;
 
 export const Main = styled.main`
-  flex: 1; 
-  padding: 2rem;
+  flex: 1;
 `;
 
 export const HomeSection = styled.section`
   text-align: center;
-  color: #333;
-`;
-
-export const OtherSection = styled.section`
-  margin-top: 2rem;
+  min-height: 100vh;
 `;
