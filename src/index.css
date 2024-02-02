@@ -4,13 +4,14 @@
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
 }
-  
-body {
-    background-color: var(--bg-body);
+
+main {
+
+    background-color: white;
+    min-height: 100vh;
 }
 
 :root {
-    --bg-body: #FFEFE9;
-    --bg-primary: #CA8010;
-    --bg-secondary: #CE441E;
+    
+    --bg-primary: #FF9100;
 }

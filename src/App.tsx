@@ -1,10 +1,12 @@
-import Sections from "./pages/Sections";
+import Home from "./pages/Home";
 
 function App() {
   return (
-    <div>
-   <Sections />
-    </div>
+    <>
+      <Home />
+      <main></main>
+      <main></main>
+    </>
   );
 }
 
