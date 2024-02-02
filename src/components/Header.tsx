@@ -1,78 +1,16 @@
-import { useEffect, useState } from "react";
-import styled from "styled-components";
-import LogoRestaurant from "../assets/images/logo.png";
-
-const HeaderContainer = styled.div<{ scrolled: boolean }>`
-  background-color: ${({ scrolled }) => (scrolled ? "#FDCA63" : "transparent")};
-  color: #fff;
-  padding: 0.1rem 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
-  transition: background-color 0.3s ease;
-
-  @media (min-width: 768px) {
-    padding: 0.1rem 4rem;
-  }
-`;
-
-const Logo = styled.img`
-  width: 100px;
-  height: 100px;
-`;
-
-const Navigation = styled.nav`
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-`;
-
-const Link = styled.a`
-  display: none;
-  text-decoration: none;
-  cursor: pointer;
-  font-weight: bold;
-  font-family: inherit;
-  padding: 10px;
-  border: 1px solid transparent;
-  border-radius: 5px;
-  color: var(--bg-secondary);
-
-  &:hover {
-    background-color: #ffffff4e;
-  }
-
-  @media (min-width: 768px) {
-    display: block;
-  }
-`;
-
-const ButtonLink = styled.div`
-  background-color: #fff;
-  color: var(--bg-primary);
-  padding: 0.5rem 1rem;
-  text-decoration: none;
-  border-radius: 5px;
-  font-weight: 800;
-  cursor: pointer;
-
-  &:hover {
-    background-color: var(--bg-secondary);
-    color: #fff;
-  }
-`;
+import { useState, useEffect } from "react";
+import Logo from "../assets/images/Logo.svg";
+import { BurguerButton, StyledBrand, StyledButton, StyledLink, StyledNavbar } from "../styles/Header";
+import { Nav, Navbar } from "react-bootstrap";
 
 const Header = () => {
+  
+  const [expanded, setExpanded] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      const isScrolled = window.scrollY > 0;
-      setScrolled(isScrolled);
+      setScrolled(window.scrollY > 0);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -83,16 +21,23 @@ const Header = () => {
   }, []);
 
   return (
-    <HeaderContainer scrolled={scrolled}>
-      <Logo src={LogoRestaurant} alt="Logo do Restaurante" />
-      <Navigation>
-        <Link>ITEM</Link>
-        <Link>ITEM</Link>
-        <Link>ITEM</Link>
-        <Link>ITEM</Link>
-        <ButtonLink>Reservar</ButtonLink>
-      </Navigation>
-    </HeaderContainer>
+    <StyledNavbar expand="lg" className={scrolled ? "scrolled" : ""}>
+      <StyledBrand href="#home">
+        <img src={Logo} alt="Logo" width={97} />
+      </StyledBrand>
+      <BurguerButton
+        className="custom-toggle-btn"
+        onClick={() => setExpanded(!expanded)}
+      />
+      <Navbar.Collapse id="basic-navbar-nav">
+        <Nav className="ml-auto">
+          <StyledLink href="#home">MENU</StyledLink>
+          <StyledLink href="#link">SOBRE</StyledLink>
+          <StyledLink href="#contact">CONTATO</StyledLink>
+          <StyledButton href="#Reservation">Reservar</StyledButton>
+        </Nav>
+      </Navbar.Collapse>
+    </StyledNavbar>
   );
 };
 

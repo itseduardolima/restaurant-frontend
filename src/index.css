@@ -5,13 +5,6 @@
     font-family: 'Montserrat', sans-serif;
 }
 
-main {
-
-    background-color: white;
-    min-height: 100vh;
-}
-
 :root {
-    
     --bg-primary: #FF9100;
 }
