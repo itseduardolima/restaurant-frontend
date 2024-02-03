@@ -1,16 +1,20 @@
 import { useState, useEffect } from "react";
-import Logo from "../assets/images/Logo.svg";
-import { BurguerButton, StyledBrand, StyledButton, StyledLink, StyledNavbar } from "../styles/Header";
 import { Nav, Navbar } from "react-bootstrap";
+import { StyledNavbar, StyledBrand, StyledLink, StyledButton, BurguerButton } from "../styles/Header";
+import Logo from "../assets/images/Logo.svg"
 
 const Header = () => {
-  
-  const [expanded, setExpanded] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [expanded, setExpanded] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 0);
+      const offset = window.scrollY;
+      if (offset > 100) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
     };
 
     window.addEventListener("scroll", handleScroll);

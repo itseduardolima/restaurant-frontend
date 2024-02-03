@@ -7,6 +7,7 @@ export const StyledNavbar = styled(Navbar)`
   position: fixed;
   width: 100%;
   transition: background-color 0.3s ease-in-out;
+  z-index: 1000; 
 
   &.scrolled {
     background-color: #343434;
