@@ -7,6 +7,31 @@ export const StyledBanner = styled.img`
   object-position: center;
 `;
 
+export const Description = styled.div`
+  position: absolute;
+  top: 40%;
+  left: 30%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  font-size: 4rem;
+  font-weight: bold;
+  font-family: "Berkshire Swash", serif;
+
+  > span {
+    color: var(--bg-primary);
+    font-family: "Berkshire Swash", serif;
+  }
+  > p {
+    width: 100%;
+    transform: translate(-50%, -50%);
+    font-size: 1.5rem;
+    position: absolute;
+    top: 210%;
+    left: 50%;
+  }
+`;
+
 export const TextOverlay = styled.div`
   position: absolute;
   top: 50%;
@@ -16,10 +41,10 @@ export const TextOverlay = styled.div`
   color: white;
   font-size: 4rem;
   font-weight: bold;
-  font-family: "Kaushan Script", cursive;
+  font-family: "Berkshire Swash", serif;
 
   > span {
-   color:  var(--bg-primary);
-   font-family: "Kaushan Script", cursive;
+    color: var(--bg-primary);
+    font-family: "Berkshire Swash", serif;
   }
 `;
