@@ -30,6 +30,21 @@ export const Description = styled.div`
     top: 210%;
     left: 50%;
   }
+
+  @media (max-width: 820px) {
+    top: 50%;
+    left: 50%;
+
+    > p {
+      top: 150%;
+    }
+  }
+
+  @media (max-width: 450px) {
+    > p {
+      display: none;
+    }
+  }
 `;
 
 export const TextOverlay = styled.div`
