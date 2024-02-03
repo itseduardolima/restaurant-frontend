@@ -1,3 +1,4 @@
+import { Nav } from "react-bootstrap";
 import styled from "styled-components";
 
 export const StyledBanner = styled.img`
@@ -8,43 +9,61 @@ export const StyledBanner = styled.img`
 `;
 
 export const Description = styled.div`
+  gap: 20px;
   position: absolute;
-  top: 40%;
-  left: 30%;
+  top: 50%;
+  left: 40%;
   transform: translate(-50%, -50%);
-  text-align: center;
-  color: white;
-  font-size: 4rem;
-  font-weight: bold;
-  font-family: "Berkshire Swash", serif;
+  display: flex;
+  flex-direction: column;
 
-  > span {
-    color: var(--bg-primary);
+  > h1 {
     font-family: "Berkshire Swash", serif;
+    font-weight: bold;
+    font-size: 4rem;
+    color: white;
+    > span {
+      color: var(--bg-primary);
+      font-family: "Berkshire Swash", serif;
+    }
+
+    @media(max-width: 450px) {
+      font-size: 3rem;
+    }
   }
+
   > p {
     width: 100%;
-    transform: translate(-50%, -50%);
     font-size: 1.5rem;
-    position: absolute;
-    top: 210%;
-    left: 50%;
+    font-weight: bold;
+    color: white;
+    font-family: "Montserrat", serif;
+  }
+
+  > a {
+    padding: 10px;
+    width: 30%;
+    background-color: var(--bg-primary);
+    border-radius: 20px;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-family: "Montserrat", serif;
+
+    @media(max-width: 768px) {
+      width: 50%;
+      font-size: 1rem;
+    }
   }
 
   @media (max-width: 820px) {
     top: 50%;
     left: 50%;
-
-    > p {
-      top: 150%;
-    }
+    width: 95%;
   }
 
-  @media (max-width: 450px) {
-    > p {
-      display: none;
-    }
-  }
+
 `;
 
 export const TextOverlay = styled.div`
@@ -63,3 +82,5 @@ export const TextOverlay = styled.div`
     font-family: "Berkshire Swash", serif;
   }
 `;
+
+export const ButtonReservation = styled(Nav.Link)``;

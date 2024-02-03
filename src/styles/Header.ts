@@ -2,16 +2,12 @@ import { Nav, Navbar } from "react-bootstrap";
 import styled from "styled-components";
 
 export const StyledNavbar = styled(Navbar)`
-  background-color: transparent;
+  background-color: white;
   padding: 10px;
   position: fixed;
   width: 100%;
   transition: background-color 0.3s ease-in-out;
-  z-index: 1000; 
-
-  &.scrolled {
-    background-color: #343434;
-  }
+  z-index: 1000;
 
   @media (min-width: 761px) {
     padding: 1rem 5rem;
@@ -28,15 +24,32 @@ export const StyledBrand = styled(Navbar.Brand)`
 
 export const StyledLink = styled(Nav.Link)`
   font-size: 16px;
-  color: #fff !important;
+  color: var(--bg-primary) !important;
   font-weight: 800;
+  border-bottom: 2px solid transparent;
+  border-left: 2px solid transparent;
+  padding-left: 5px;
+  padding-bottom: 15px;
 
   &:hover {
-    color: var(--bg-primary) !important;
+    border-left: 2px solid var(--bg-primary);
   }
 
   &:focus {
-    color: #ff9100 !important;
+    border-left: 2px solid var(--bg-primary);
+  }
+
+  @media (min-width: 991px) {
+    padding-bottom: 0;
+    &:hover {
+      border-bottom: 2px solid var(--bg-primary);
+      border-left: 2px solid transparent;
+    }
+
+    &:focus {
+      border-bottom: 2px solid var(--bg-primary);
+      border-left: 2px solid transparent;
+    }
   }
 `;
 
@@ -44,7 +57,7 @@ export const StyledButton = styled(Nav.Link)`
   width: 100px;
   background-color: var(--bg-primary);
   border: none;
-  border-radius: 5px;
+  border-radius: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -52,13 +65,18 @@ export const StyledButton = styled(Nav.Link)`
   font-weight: 500;
   color: white;
 
-  @media (min-width: 991px) {
-    margin-left: 2rem;
-  }
-
   &:hover {
     background-color: #ff9100a6;
     color: white;
+  }
+
+  &:focus {
+    color: white !important;
+    background-color: #ff9100a6;
+  }
+
+  @media (min-width: 991px) {
+    margin-left: 2rem;
   }
 `;
 

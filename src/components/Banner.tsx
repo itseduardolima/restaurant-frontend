@@ -1,7 +1,7 @@
-import { Description, StyledBanner, TextOverlay } from "../styles/Banner";
+import { ButtonReservation, Description, StyledBanner, TextOverlay } from "../styles/Banner";
 import BannerRestaurant from "../assets/images/restaurant-photo.jpg";
 import BannerPizza from "../assets/images/banner-pizza.jpg";
-import BannerBurguer from "../assets/images/banner-burger.jpg";
+import BannerBurguer from "../assets/images/banner-burguer.jpg";
 import Carousel from "react-bootstrap/Carousel";
 
 const Banner = () => {
@@ -10,11 +10,12 @@ const Banner = () => {
       <Carousel.Item>
         <StyledBanner src={BannerRestaurant} alt="Banner Restaurant" />
         <Description>
-          Pérola Lanche <span>&</span> Pizzaria
+          <h1>Pérola Lanche <span>&</span> Pizzaria</h1>
           <p>
             Venha conhecer a Pérola Lanche & Pizzaria,onde cada pedaço de pizza
             é uma experiência que vale a pena saborear.
           </p>
+          <a href="#reservation">Reservar uma mesa</a>
         </Description>
       </Carousel.Item>
       <Carousel.Item>
