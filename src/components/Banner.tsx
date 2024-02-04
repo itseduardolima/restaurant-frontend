@@ -1,4 +1,4 @@
-import { ButtonReservation, Description, StyledBanner, TextOverlay } from "../styles/Banner";
+import { Description, StyledBanner, TextOverlay } from "../styles/Banner";
 import BannerRestaurant from "../assets/images/restaurant-photo.jpg";
 import BannerPizza from "../assets/images/banner-pizza.jpg";
 import BannerBurguer from "../assets/images/banner-burguer.jpg";
