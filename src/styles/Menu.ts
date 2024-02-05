@@ -2,7 +2,7 @@ import { Container } from "react-bootstrap";
 import styled from "styled-components";
 
 export const StyledContainer = styled(Container)`
-  padding: 50px 0;
+  margin-top: 30px;
 `;
 
 export const MenuHeader = styled.h1`
@@ -11,6 +11,7 @@ export const MenuHeader = styled.h1`
   font-family: "Handlee", cursive;
   color: #000;
   border-bottom: 3px solid var(--bg-primary);
+  margin-bottom: 20px;
 `;
 
 export const CategoryContainer = styled.div`

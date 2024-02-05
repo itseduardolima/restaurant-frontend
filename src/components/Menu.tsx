@@ -1,6 +1,6 @@
-import { useState } from "react";
+import React, { useState, useRef } from "react";
 import Pepperoni from "../assets/images/pizzas/pepperoni.jpg";
-import Cheeseburger from "../assets/images/hamburgues/cheeseburger.jpg"
+import Cheeseburger from "../assets/images/hamburgues/cheeseburger.jpg";
 import {
   CategoryButton,
   CategoryContainer,
@@ -41,7 +41,11 @@ const menuData = {
   ],
 };
 
-const Menu = () => {
+type MenuProps = {
+  id?: string;
+};
+
+const Menu: React.FC<MenuProps> = ({ id, ...props }) => {
   const [selectedCategory, setSelectedCategory] = useState("TODOS");
   const filteredItems = menuData.items.filter(
     (item) =>
@@ -50,8 +54,10 @@ const Menu = () => {
       selectedCategory === "TODOS"
   );
 
+  const ref = useRef(null); // Create a ref variable
+
   return (
-    <StyledContainer>
+    <StyledContainer id={id} ref={ref}>
       <MenuHeader>Menu</MenuHeader>
       <CategoryContainer>
         {menuData.categories.map((category) => (

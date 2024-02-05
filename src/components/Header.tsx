@@ -1,10 +1,9 @@
 import { useState } from "react";
 import { Nav, Navbar } from "react-bootstrap";
-import { StyledNavbar, StyledBrand, StyledLink, StyledButton, BurguerButton } from "../styles/Header";
+import {StyledNavbar,StyledBrand,StyledLink,StyledButton,BurguerButton } from "../styles/Header";
 import Logo from "../assets/images/Logo.png";
 
 const Header = () => {
-  
   const [expanded, setExpanded] = useState(false);
 
   return (
@@ -18,8 +17,8 @@ const Header = () => {
       />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ml-auto">
-          <StyledLink href="#home">MENU</StyledLink>
-          <StyledLink href="#link">SOBRE</StyledLink>
+          <StyledLink href="#menu">MENU</StyledLink>
+          <StyledLink href="#about">SOBRE</StyledLink>
           <StyledLink href="#contact">CONTATO</StyledLink>
           <StyledButton href="#Reservation">Reservar</StyledButton>
         </Nav>

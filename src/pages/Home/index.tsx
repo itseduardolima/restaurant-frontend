@@ -7,7 +7,7 @@ const Home = () => {
     <>
       <Header />
       <Banner />
-      <Menu />
+      <Menu id="menu" />
     </>
   );
 };
