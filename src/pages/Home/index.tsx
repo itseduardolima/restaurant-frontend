@@ -5,8 +5,8 @@ import Menu from "../../components/Menu";
 const Home = () => {
   return (
     <>
-      <Header />
-      <Banner />
+      <Header  />
+      <Banner id="home" />
       <Menu id="menu" />
     </>
   );

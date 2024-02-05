@@ -3,14 +3,23 @@ import BannerRestaurant from "../assets/images/restaurant-photo.jpg";
 import BannerPizza from "../assets/images/banner-pizza.jpg";
 import BannerBurguer from "../assets/images/banner-burguer.jpg";
 import Carousel from "react-bootstrap/Carousel";
+import { useRef } from "react";
 
-const Banner = () => {
+type Props = {
+  id?: string;
+};
+
+const Banner: React.FC<Props> = ({ id }) => {
+  const ref = useRef(null);
+
   return (
-    <Carousel>
+    <Carousel id={id} ref={ref}>
       <Carousel.Item>
         <StyledBanner src={BannerRestaurant} alt="Banner Restaurant" />
         <Description>
-          <h1>Pérola Lanche <span>&</span> Pizzaria</h1>
+          <h1>
+            Pérola Lanche <span>&</span> Pizzaria
+          </h1>
           <p>
             Venha conhecer a Pérola Lanche & Pizzaria,onde cada pedaço de pizza
             é uma experiência que vale a pena saborear.

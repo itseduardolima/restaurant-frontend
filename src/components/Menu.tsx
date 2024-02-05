@@ -45,7 +45,7 @@ type MenuProps = {
   id?: string;
 };
 
-const Menu: React.FC<MenuProps> = ({ id, ...props }) => {
+const Menu: React.FC<MenuProps> = ({ id }) => {
   const [selectedCategory, setSelectedCategory] = useState("TODOS");
   const filteredItems = menuData.items.filter(
     (item) =>
@@ -54,7 +54,7 @@ const Menu: React.FC<MenuProps> = ({ id, ...props }) => {
       selectedCategory === "TODOS"
   );
 
-  const ref = useRef(null); // Create a ref variable
+  const ref = useRef(null);
 
   return (
     <StyledContainer id={id} ref={ref}>
