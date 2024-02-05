@@ -1,13 +1,13 @@
-import Home from "./pages/Home";
+import { QueryClientProvider, QueryClient } from '@tanstack/react-query'
+import { AppRoutes } from './routes'
 
-function App() {
+const queryClient = new QueryClient()
+
+export const App = () => {
   return (
-    <>
-      <Home />
-      <main></main>
-      <main></main>
-    </>
-  );
-}
+    <QueryClientProvider client={queryClient}>
+      < AppRoutes />
+    </QueryClientProvider>
 
-export default App;
+  )
+}

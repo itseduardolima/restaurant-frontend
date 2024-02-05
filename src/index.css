@@ -3,9 +3,12 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
+    color: rgba(0, 0, 0, 0.726);
 }
 
 :root {
     --bg-primary: #FF9100;
     --bg-primary-light: #FFA733;
+    --bg-text: rgba(0, 0, 0, 0.726);
+    --font-primary: 'Montserrat', sans-serif;
 }
