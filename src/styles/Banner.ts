@@ -22,10 +22,6 @@ export const Description = styled.div`
     font-weight: bold;
     font-size: 4rem;
     color: white;
-    > span {
-      color: var(--bg-primary);
-      font-family: "Berkshire Swash", serif;
-    }
 
     @media(max-width: 450px) {
       font-size: 3rem;
