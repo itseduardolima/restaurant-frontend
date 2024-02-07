@@ -1,6 +1,4 @@
 import React, { useState, useRef } from "react";
-import Pepperoni from "../assets/images/pizzas/pepperoni.jpg";
-import Cheeseburger from "../assets/images/hamburgues/cheeseburger.jpg";
 import {
   CategoryButton,
   CategoryContainer,
@@ -14,32 +12,7 @@ import {
   MenuItemPrice,
   StyledContainer,
 } from "../styles/Menu";
-
-const menuData = {
-  categories: ["TODOS", "PIZZA", "BURGUER"],
-  items: [
-    {
-      imageSrc: Pepperoni,
-      name: "Pizza de Pepperoni",
-      category: "PIZZA",
-      price: 30,
-      ingredients: [
-        "Heirloom cherry tomatoes",
-        "high-quality extra-virgin olive oil",
-      ],
-    },
-    {
-      imageSrc: Cheeseburger,
-      name: "Cheeseburger",
-      category: "BURGUER",
-      price: 20,
-      ingredients: [
-        "Heirloom cherry tomatoes",
-        "high-quality extra-virgin olive oil",
-      ],
-    },
-  ],
-};
+import { menuData } from "../common/utils/Array";
 
 type MenuProps = {
   id?: string;
