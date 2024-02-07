@@ -1,6 +1,14 @@
 import { useState } from "react";
 import { Nav, Navbar } from "react-bootstrap";
-import {StyledNavbar,StyledBrand,StyledLink,StyledButton,BurguerButton } from "../styles/Header";
+import {
+  StyledNavbar,
+  StyledBrand,
+  StyledLink,
+  StyledButton,
+  BurguerButton,
+  StyledLogin,
+  ButtonContainer,
+} from "../styles/Header";
 import Logo from "../assets/images/Logo.png";
 
 const Header = () => {
@@ -20,7 +28,10 @@ const Header = () => {
           <StyledLink href="#menu">MENU</StyledLink>
           <StyledLink href="#about">SOBRE</StyledLink>
           <StyledLink href="#contact">CONTATO</StyledLink>
-          <StyledButton href="#Reservation">Reservar</StyledButton>
+          <ButtonContainer>
+            <StyledButton href="#Reservation">Reservar</StyledButton>
+            <StyledLogin to="/signIn">Entrar</StyledLogin>
+          </ButtonContainer>
         </Nav>
       </Navbar.Collapse>
     </StyledNavbar>

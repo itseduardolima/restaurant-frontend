@@ -1,4 +1,5 @@
 import { Nav, Navbar } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const StyledNavbar = styled(Navbar)`
@@ -18,7 +19,7 @@ export const StyledBrand = styled(Navbar.Brand)`
   margin-right: 0;
 
   @media (min-width: 991px) {
-    margin-right: 60%;
+    margin-right: 55%;
   }
 `;
 
@@ -53,7 +54,17 @@ export const StyledLink = styled(Nav.Link)`
   }
 `;
 
+export const ButtonContainer = styled.div`
+  display: flex;
+  gap: 5px;
+
+  @media (max-width: 991px) {
+   flex-direction: column;
+  }
+`;
+
 export const StyledButton = styled(Nav.Link)`
+  padding: 0 30px;
   width: 100px;
   background-color: var(--bg-primary);
   border: none;
@@ -76,7 +87,7 @@ export const StyledButton = styled(Nav.Link)`
   }
 
   @media (min-width: 991px) {
-    margin-left: 2rem;
+    margin-left: 1rem;
   }
 `;
 
@@ -85,5 +96,24 @@ export const BurguerButton = styled(Navbar.Toggle)`
 
   &:focus {
     box-shadow: none !important;
+  }
+`;
+
+export const StyledLogin = styled(Link)`
+  width: 100px;
+  border: 1px solid var(--bg-primary);
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 0;
+  font-weight: 500;
+  color: var(--bg-primary);
+  text-decoration: none;
+
+  &:hover {
+    background-color: #ff9100ab;
+    color: white;
+    border: none;
   }
 `;
