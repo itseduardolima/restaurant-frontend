@@ -3,7 +3,7 @@ import { Box } from "@mui/system";
 import { ChangeEvent, FormEvent } from "react";
 import { useSignUp } from "../hooks/useRegister";
 
-const SignUp = () => {
+const SignUpForm = () => {
   const { formData, setFormData, isSubmitting, setIsSubmitting } = useSignUp();
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -99,4 +99,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default SignUpForm;

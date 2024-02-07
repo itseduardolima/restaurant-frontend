@@ -1,7 +1,7 @@
 import { Button, TextField } from "@mui/material";
 import { useLogin } from "../hooks/useLogin";
 
-export const SignIn = () => {
+export const SignInForm = () => {
   const { form, isLoggingIn, handleInputChange, handleFormSubmit } = useLogin();
 
   return (

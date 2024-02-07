@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { SignIn } from "../../components/SignInForm";
+import SignIn from "../../pages/Login/SignIn";
 
 export const RequireAuth = ({
   children,
