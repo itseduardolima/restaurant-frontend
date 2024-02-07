@@ -30,7 +30,7 @@ export const useSignUp = () => {
     } finally {
       setIsSubmitting(false);
     }
-  }, [formData]);
+  }, [formData, navigate]);
 
   useEffect(() => {
     if (!isSubmitting) return;
