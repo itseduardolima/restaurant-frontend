@@ -23,7 +23,12 @@ export const Description = styled.div`
     font-size: 4rem;
     color: white;
 
-    @media(max-width: 450px) {
+    > span {
+      color: var(--bg-primary);
+      font-family: "Berkshire Swash", serif;
+    }
+
+    @media (max-width: 450px) {
       font-size: 3rem;
     }
   }
@@ -47,7 +52,7 @@ export const Description = styled.div`
     font-weight: bold;
     font-family: "Montserrat", serif;
 
-    @media(max-width: 768px) {
+    @media (max-width: 768px) {
       width: 50%;
       font-size: 1rem;
     }
@@ -58,8 +63,6 @@ export const Description = styled.div`
     left: 50%;
     width: 95%;
   }
-
-
 `;
 
 export const TextOverlay = styled.div`
