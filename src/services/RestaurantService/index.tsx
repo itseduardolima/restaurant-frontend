@@ -1,5 +1,5 @@
 import { api } from "../../hooks/api";
-import { IRestaurant } from "./Irestaurant";
+import { IRestaurant } from "./IRestaurant";
 
 export async function getRestaurant() {
     const request = await api.get("restaurant");
