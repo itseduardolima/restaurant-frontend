@@ -1,20 +1,28 @@
 import { Button, TextField } from "@mui/material";
+import { useLogin } from "../hooks/useLogin";
 
 export const SignIn = () => {
+  const { form, isLoggingIn, handleInputChange, handleFormSubmit } = useLogin();
+
   return (
-    <div>
+    <form onSubmit={handleFormSubmit}>
       <TextField
         fullWidth
         label="Digite seu email"
         name="email"
         margin="normal"
+        value={form.email}
+        onChange={handleInputChange}
       />
       <TextField
         fullWidth
         margin="normal"
         name="password"
         label="Digite sua senha"
+        type="password"
         autoComplete="current-password"
+        value={form.password}
+        onChange={handleInputChange}
       />
 
       <Button
@@ -30,9 +38,10 @@ export const SignIn = () => {
             background: "#FFA733",
           },
         }}
+        disabled={isLoggingIn}
       >
-        Entrar
+        {isLoggingIn ? 'Entrando...' : 'Entrar'}
       </Button>
-    </div>
+    </form>
   );
 };

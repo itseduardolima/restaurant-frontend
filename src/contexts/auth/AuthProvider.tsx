@@ -1,14 +1,24 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { AuthContext } from "./AuthContext";
 import { Payload } from "../../types/Payload";
 import { useApi } from "../../hooks/api";
+import { jwtDecode } from "jwt-decode";
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<Payload | null>(null);
-  const [loading, setLoading] = useState(true);
   const api = useApi();
-  const navigate = useNavigate();
+
+  const isTokenExpired = (token: string) => {
+    try {
+      const decodedToken: any = jwtDecode(token);
+      return decodedToken.exp * 1000 < Date.now();
+    } catch (error) {
+      console.error("Erro ao decodificar o token:", error);
+      return true;
+    }
+  };
+
+  const getTokenFromLocalStorage = () => localStorage.getItem("authToken");
 
   const handleApiResponse = (data: any) => {
     if (data && !data.status) {
@@ -38,30 +48,23 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   useEffect(() => {
-    const storageData = localStorage.getItem("authToken");
-    if (storageData) {
+    const token = getTokenFromLocalStorage();
+
+    if (token && !isTokenExpired(token)) {
       try {
-        const decodedToken: any = storageData;
-        if (decodedToken.exp * 1000 > Date.now()) {
-          setUser({
-            name: decodedToken.name,
-            email: decodedToken.email,
-          });
-        } else {
-          clearUserLocalStorage();
-          console.error("Sua sessão expirou. Por favor, faça login novamente.");
-
-          navigate("/");
-        }
+        const decodedToken: any = jwtDecode(token);
+        setUser({
+          name: decodedToken.name,
+          email: decodedToken.email,
+        });
       } catch (error) {
-        clearUserLocalStorage();
-        console.error("Erro ao decodificar o token.");
-
-        navigate("/");
+        console.error("Erro ao decodificar o token:", error);
       }
+    } else {
+      clearUserLocalStorage();
     }
-    setLoading(false);
-  }, [navigate]);
+
+  }, []);
 
   const signin = async (email: string, password: string) => {
     const data = await api.signin(email, password);
@@ -79,7 +82,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, signin, signout, loading }}>
+    <AuthContext.Provider value={{ user, signin, signout }}>
       {children}
     </AuthContext.Provider>
   );

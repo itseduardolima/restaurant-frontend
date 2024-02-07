@@ -15,7 +15,7 @@ api.interceptors.request.use((config) => {
 export const useApi = () => ({
   signin: async (email: string, password: string) => {
     try {
-      const response = await api.post("/auth/login", { email, password });
+      const response = await api.post("auth/login", { email, password });
       return response.data;
     } catch (error: any) {
       if (error.response) {
@@ -54,7 +54,7 @@ export const useApi = () => ({
         token,
       };
 
-      const response = await api.post("/auth/logout", requestData, { headers });
+      const response = await api.post("auth/logout", requestData, { headers });
 
       if (response.status === 200) {
         localStorage.removeItem("authToken");

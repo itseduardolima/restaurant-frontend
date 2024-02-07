@@ -57,7 +57,7 @@ export default function Login() {
                 <Typography component="h1" variant="h5">
                   Crie sua conta
                 </Typography>
-                <Box component="form" noValidate sx={{ mt: 1 }}>
+                <Box sx={{ mt: 1 }}>
                   <SignUp />
                   <Grid container>
                     <Grid item>
@@ -73,7 +73,7 @@ export default function Login() {
                 <Typography component="h1" variant="h5">
                   Entre na sua conta
                 </Typography>
-                <Box component="form" noValidate sx={{ mt: 1 }}>
+                <Box sx={{ mt: 1 }}>
                   <SignIn />
                   <Grid container>
                     <Grid item xs>

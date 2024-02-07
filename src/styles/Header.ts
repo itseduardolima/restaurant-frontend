@@ -19,7 +19,7 @@ export const StyledBrand = styled(Navbar.Brand)`
   margin-right: 0;
 
   @media (min-width: 991px) {
-    margin-right: 55%;
+    margin-right: 56%;
   }
 `;
 
@@ -117,3 +117,23 @@ export const StyledLogin = styled(Link)`
     border: none;
   }
 `;
+
+export const Logout = styled.button`
+  width: 100px;
+  border: 1px solid var(--bg-primary);
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 0;
+  font-weight: 500;
+  color: var(--bg-primary);
+  text-decoration: none;
+
+  &:hover {
+    background-color: #ff9100ab;
+    color: white;
+    border: none;
+  }
+`;
+
