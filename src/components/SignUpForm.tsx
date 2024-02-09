@@ -4,12 +4,12 @@ import { ChangeEvent, FormEvent, useState } from "react";
 import { useSignUp } from "../hooks/useRegister";
 import { View } from "../styles/Form";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
+import { isValidEmail } from "../common/utils/Validate";
 
 const SignUpForm = () => {
   const { formData, setFormData, isSubmitting, setIsSubmitting } = useSignUp();
   const [showPassword, setShowPassword] = useState(false);
-  const [showPasswordConfirmation, setShowPasswordConfirmation] =
-    useState(false);
+  const [showPasswordConfirmation, setShowPasswordConfirmation] = useState(false);
 
   const handleTogglePassword = () => {
     setShowPassword(!showPassword);
@@ -18,12 +18,18 @@ const SignUpForm = () => {
     setShowPasswordConfirmation(!showPasswordConfirmation);
   };
 
+  const passwordsMatch = () => {
+    return formData.user_password === formData.user_password_confirmation;
+  };
+
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
+
     setFormData((prevData) => ({
       ...prevData,
-      [name]: value,
+      [name]: value
     }));
+    
   };
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -56,6 +62,9 @@ const SignUpForm = () => {
             name="user_email"
             value={formData.user_email}
             onChange={handleChange}
+            error={
+              !isValidEmail(formData.user_email) && formData.user_email !== ""
+            }
           />
         </Grid>
         <Grid item xs={12}>
@@ -95,11 +104,16 @@ const SignUpForm = () => {
             value={formData.user_password_confirmation}
             onChange={handleChange}
             type={showPasswordConfirmation ? "text" : "password"}
+            error={!passwordsMatch()}
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end">
                   <View onClick={handleTogglePasswordConfirmation} edge="end">
-                    {showPasswordConfirmation ? <VisibilityOff /> : <Visibility />}
+                    {showPasswordConfirmation ? (
+                      <VisibilityOff />
+                    ) : (
+                      <Visibility />
+                    )}
                   </View>
                 </InputAdornment>
               ),

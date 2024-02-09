@@ -3,6 +3,7 @@ import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useLogin } from "../hooks/useLogin";
 import { useState } from "react";
 import { View } from "../styles/Form";
+import { isValidEmail } from "../common/utils/Validate";
 
 export const SignInForm = () => {
   const { form, isLoggingIn, handleInputChange, handleFormSubmit } = useLogin();
@@ -21,6 +22,9 @@ export const SignInForm = () => {
         margin="normal"
         value={form.email}
         onChange={handleInputChange}
+        error={
+          !isValidEmail(form.email) && form.email !== ""
+        }
       />
       <TextField
         fullWidth
