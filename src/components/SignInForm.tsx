@@ -1,8 +1,16 @@
-import { Button, TextField } from "@mui/material";
+import { Button, InputAdornment, TextField } from "@mui/material";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useLogin } from "../hooks/useLogin";
+import { useState } from "react";
+import { View } from "../styles/Form";
 
 export const SignInForm = () => {
   const { form, isLoggingIn, handleInputChange, handleFormSubmit } = useLogin();
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleTogglePassword = () => {
+    setShowPassword(!showPassword);
+  };
 
   return (
     <form onSubmit={handleFormSubmit}>
@@ -19,10 +27,19 @@ export const SignInForm = () => {
         margin="normal"
         name="password"
         label="Digite sua senha"
-        type="password"
+        type={showPassword ? "text" : "password"}
         autoComplete="current-password"
         value={form.password}
         onChange={handleInputChange}
+        InputProps={{
+          endAdornment: (
+            <InputAdornment position="end">
+              <View  onClick={handleTogglePassword} edge="end">
+                {showPassword ? <VisibilityOff /> : <Visibility />}
+              </View>
+            </InputAdornment>
+          ),
+        }}
       />
 
       <Button
