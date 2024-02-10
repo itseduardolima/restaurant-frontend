@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { api } from "./api";
-import { IRegister } from "../services/RegisterService/IRegister";
+import { IRegister } from "../services/Register/IRegister";
 import { toast } from "react-toastify";
 import { handleError } from "../types/Error";
 import { useNavigate } from "react-router-dom";
