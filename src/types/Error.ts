@@ -5,7 +5,7 @@ import { ErrorResponse } from "../interface/error.interface";
 export const handleError = (error: unknown) => {
   const axiosErr = error as AxiosError<ErrorResponse>;
 
-  let errorMessage = "Erro ao cadastrar";
+  let errorMessage = "Erro";
   if (
     axiosErr?.response?.data?.message &&
     Array.isArray(axiosErr.response.data.message)
