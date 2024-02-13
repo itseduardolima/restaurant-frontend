@@ -1,68 +1,102 @@
-import React, { useState } from 'react';
-import { StyledContainer } from '../styles/Reservation';
-import { Table } from '../services/Tables/ITables';
-import { useCreateReservation } from '../hooks/useReservation';
-import { useTables } from '../hooks/useTables';
-import { useCurrentUser } from '../hooks/useCurrentUser';
+import React, { useContext, useEffect, useState } from "react";
+import { StyledContainer } from "../styles/Reservation";
+import { useCreateReservation, useListAvailability } from "../hooks/useReservation";
+import { useCurrentUser } from "../hooks/useCurrentUser";
+import { StyledLogin } from "../styles/Header";
+import { AuthContext } from "../contexts/auth/AuthContext";
+import { IAvailability } from "../services/Reservation/IReservation";
+import { Table } from "../services/Tables/ITables";
 
 const Reservation = () => {
+  
   const mutateReservation = useCreateReservation();
+
+  const [date, setDate] = useState<string>(new Date().toISOString().slice(0, 10));
+  const [search_capacity, setSearch_capacity] = useState<number>(0);
+
+  const { user } = useContext(AuthContext);  
   const { data: userData } = useCurrentUser();
-  const { data } = useTables();
-  const [selectedTable, setSelectedTable] = useState<Table | null>(null);
-  const [selectedTime, setSelectedTime] = useState<string>('');
+  const { data: availabilityData, isLoading, refetch } = useListAvailability(date, search_capacity);
 
-  const handleTableSelection = (table: Table) => {
-    setSelectedTable(table);
+  useEffect(() => {
+    refetch();
+  }, [date, search_capacity, refetch]);
+  
+  const handleDateSelection = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const selectedDateString = event.target.value;
+    const formattedDate = selectedDateString.split('/').reverse().join('-');
+    setDate(formattedDate);
   };
 
-  const handleTimeSelection = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedTime(event.target.value);
+  const handleCapacitySelection = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const capacity = parseInt(event.target.value);
+    setSearch_capacity(capacity);
   };
 
-  const handleReservation = () => {
-    if (selectedTable && selectedTime && userData) {
+  const handleReservation = (tableId: string, reservationDate: string) => {
+    if (tableId && reservationDate && userData) {
+      const date = new Date(reservationDate);
       const reservationData = {
         userId: userData.user_id,
-        tableId: selectedTable.table_id,
-        reservationDate: new Date()
+        tableId: tableId,
+        reservationDate: date,
       };
-      
+
       mutateReservation.mutate(reservationData);
     }
   };
 
-  const tables: Table[] = data || [];
-
   return (
     <StyledContainer>
-      <h2>Reserva de Mesa</h2>
-      <div>
-        <label htmlFor="time">Selecione o Horário:</label>
-        <select id="time" onChange={handleTimeSelection} value={selectedTime}>
-          <option value="">Selecione um horário</option>
-          <option value="12:00">18:00</option>
-          <option value="13:00">19:00</option>
-          <option value="14:00">20:00</option>
-          <option value="15:00">21:00</option>
-          <option value="15:00">22:00</option>
-        </select>
-      </div>
-      <div>
-        <h3>Selecione a Mesa:</h3>
-        <ul>
-          {tables.map((table) => (
-            <li key={table.table_id} onClick={() => handleTableSelection(table)}>
-              Mesa: {table.table_number}
-            </li>
-          ))}
-        </ul>
-        {selectedTable && (
-          <p>Mesa selecionada: {selectedTable.table_number}</p>
-        )}
-      </div>
-      
-      <button onClick={handleReservation}>Reservar Mesa</button>
+      {user ? (
+        <>
+          <h2>Reserva de Mesa</h2>
+          <div>
+            <label htmlFor="date">Para qual dia deseja reservar?</label>
+            <input
+              type="date"
+              id="date"
+              onChange={handleDateSelection}
+              value={date}
+            />
+          </div>
+          <div>
+            <label htmlFor="capacity">Mesa para quantas pessoas?:</label>
+            <input
+              type="number"
+              id="capacity"
+              onChange={handleCapacitySelection}
+              value={search_capacity}
+            />
+          </div>
+          <div>
+            <h3>Horários disponíves:</h3>
+            {isLoading ? (
+              <p>Carregando...</p>
+            ) : (
+              availabilityData?.map( (availability: IAvailability) => (
+                <div key={availability.time}>
+                  <h4>{availability.time}</h4>
+                  {availability.tables
+                    .filter((table: Table) => !table.isBooked)
+                    .map((table: Table) => (
+                      <div key={table.table_id}>
+                        <p>Mesa {table.table_number}</p>
+                        <p>Capacidade: {table.table_capacity}</p>
+                        <p>Estado: {table.isBooked ? "Reservado" : "Disponível"}</p>
+                        <button onClick={() => handleReservation(table.table_id, availability.time)}>
+                          Reservar
+                        </button>
+                      </div>
+                    ))}
+                </div>
+              ))
+            )}
+          </div>
+        </>
+      ) : (
+        <StyledLogin to="/signIn">Faça login</StyledLogin>
+      )}
     </StyledContainer>
   );
 };

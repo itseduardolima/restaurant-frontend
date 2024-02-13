@@ -1,7 +1,24 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { toast } from "react-toastify";
-import { createReservation } from "../services/Reservation";
+import { createReservation, getAvailability, getReservation } from "../services/Reservation";
 import { handleError } from "../types/Error";
+
+export function useListReservation() {
+  const query = useQuery({
+    queryFn: getReservation,
+    queryKey: ["reservation"],
+  });
+
+  return query;
+}
+
+export function useListAvailability(date: string, search_capacity: number) {
+  return useQuery({
+    queryFn: () => getAvailability(date, search_capacity),
+    queryKey: ["availability"],
+  });
+}
+
 
 export function useCreateReservation() {
   const queryClient = useQueryClient();
