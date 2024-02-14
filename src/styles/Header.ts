@@ -63,12 +63,13 @@ export const ButtonContainer = styled.div`
   }
 `;
 
-export const StyledButton = styled(Nav.Link)`
+export const StyledButton = styled.a`
   padding: 0 30px;
   width: 100px;
   background-color: var(--bg-primary);
   border: none;
   border-radius: 20px;
+  text-decoration: none;
   display: flex;
   justify-content: center;
   align-items: center;

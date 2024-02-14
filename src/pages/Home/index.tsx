@@ -9,7 +9,7 @@ const Home = () => {
       <Header  />
       <Banner id="home" />
       <Menu id="menu" />
-      <Reservation />
+      <Reservation id="reservation" />
     </>
   );
 };

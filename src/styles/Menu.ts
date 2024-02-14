@@ -2,7 +2,7 @@ import { Container } from "react-bootstrap";
 import styled from "styled-components";
 
 export const StyledContainer = styled(Container)`
-  margin-top: 30px;
+  padding: 5rem 0;
 `;
 
 export const MenuHeader = styled.h1`
