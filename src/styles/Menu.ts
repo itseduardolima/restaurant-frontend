@@ -36,30 +36,30 @@ export const CategoryButton = styled.button`
   }
 `;
 
-export const MenuItemContainer = styled.div`
-  display: flex;
-  padding: 20px 50px;
-  border-bottom: 1px solid #cccc;
+export const CardContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-auto-rows: 157px;
+  row-gap: 0.7rem;
+  column-gap: 2rem;
 
-  @media (max-width: 450px) {
-    padding: 20px 10px;
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
   }
 `;
 
-export const MenuItem = styled.div`
+export const MenuCard = styled.div`
   display: flex;
   gap: 20px;
+  border-bottom: 1px solid #cccc;
 `;
 
 export const MenuDescription = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 40%;
-
-  @media (max-width: 450px) {
-    width: 100%;
-  }
+  padding: 10px 0;
+  width: 100%;
 `;
 
 export const MenuItemImage = styled.img`

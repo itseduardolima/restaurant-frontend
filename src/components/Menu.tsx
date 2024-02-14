@@ -1,12 +1,12 @@
 import React, { useState, useRef } from "react";
 import {
+  CardContainer,
   CategoryButton,
   CategoryContainer,
+  MenuCard,
   MenuDescription,
   MenuHeader,
   MenuIngredients,
-  MenuItem,
-  MenuItemContainer,
   MenuItemImage,
   MenuItemName,
   MenuItemPrice,
@@ -43,18 +43,18 @@ const Menu: React.FC<MenuProps> = ({ id }) => {
           </CategoryButton>
         ))}
       </CategoryContainer>
-      {filteredItems.map((item) => (
-        <MenuItemContainer key={item.name}>
-          <MenuItem>
+      <CardContainer>
+        {filteredItems.map((item) => (
+          <MenuCard key={item.name}>
             <MenuItemImage src={item.imageSrc} alt={item.name} />
             <MenuDescription>
               <MenuItemName>{item.name}</MenuItemName>
               <MenuIngredients>{item.ingredients}</MenuIngredients>
               <MenuItemPrice>R${item.price}</MenuItemPrice>
             </MenuDescription>
-          </MenuItem>
-        </MenuItemContainer>
-      ))}
+          </MenuCard>
+        ))}
+      </CardContainer>
     </StyledContainer>
   );
 };
