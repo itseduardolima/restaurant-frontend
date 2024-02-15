@@ -17,7 +17,7 @@ export const StyledNavbar = styled(Navbar)`
   }
 `;
 
-export const StyledBrand = styled(Navbar.Brand)`
+export const StyledBrand = styled(Link)`
   margin-right: 0;
 
   @media (min-width: 991px) {

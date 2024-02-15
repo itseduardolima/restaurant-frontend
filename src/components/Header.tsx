@@ -10,7 +10,7 @@ const Header = () => {
 
   return (
     <StyledNavbar expand="lg">
-      <StyledBrand href="#home">
+      <StyledBrand to="/">
         <img src={Logo} alt="Logo" width={97} />
       </StyledBrand>
       <BurguerButton
