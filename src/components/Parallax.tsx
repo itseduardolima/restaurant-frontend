@@ -7,7 +7,7 @@ const ParallaxEffect = () => {
       <StyledParallax bgImage={lustres} strength={500}>
         <ContentContainer>
           <h2>Você precisar estar logado para realizar a reserva de uma mesa.</h2>
-          <ReservationBtn to="/signIn">Fazer login</ReservationBtn>
+          <ReservationBtn to="/reservation">Reservar agora</ReservationBtn>
         </ContentContainer>
       </StyledParallax>
     </Container>
