@@ -65,7 +65,7 @@ export const ButtonContainer = styled.div`
   }
 `;
 
-export const StyledButton = styled.a`
+export const StyledButton = styled(Link)`
   padding: 0 30px;
   width: 100px;
   background-color: var(--bg-primary);

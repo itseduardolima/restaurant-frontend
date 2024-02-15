@@ -23,7 +23,7 @@ const Header = () => {
           <StyledLink href="#about">SOBRE</StyledLink>
           <StyledLink href="#contact">CONTATO</StyledLink>
           <ButtonContainer>
-            <StyledButton href="#reservation">Reservar</StyledButton>
+            <StyledButton to="/reservation">Reservar</StyledButton>
             {user ? (
               <Logout onClick={signout}>Sair</Logout>
             ) : (
