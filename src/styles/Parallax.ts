@@ -21,6 +21,7 @@ export const ContentContainer = styled.div`
   gap: 20px;
 
   > h2 {
+    text-align: center;
     color: white;
     font-family: "Berkshire Swash", serif;
   }

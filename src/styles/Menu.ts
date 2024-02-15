@@ -2,7 +2,7 @@ import { Container } from "react-bootstrap";
 import styled from "styled-components";
 
 export const StyledContainer = styled(Container)`
-  padding: 5rem 0;
+  padding: 2rem 0;
 `;
 
 export const MenuHeader = styled.h1`
@@ -18,14 +18,14 @@ export const CategoryContainer = styled.div`
   display: flex;
   justify-content: center;
   gap: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 2rem;
 `;
 
 export const CategoryButton = styled.button`
   background-color: var(--bg-primary-light);
   border: none;
   border-radius: 20px;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Handlee", cursive;
   font-weight: bold;
   color: white;
   padding: 10px 20px;
@@ -40,7 +40,7 @@ export const CardContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   grid-auto-rows: 157px;
-  row-gap: 0.7rem;
+  row-gap: 1rem;
   column-gap: 2rem;
 
   @media (min-width: 768px) {
@@ -50,7 +50,9 @@ export const CardContainer = styled.div`
 
 export const MenuCard = styled.div`
   display: flex;
+  align-items: center;
   gap: 20px;
+  padding-bottom: 30px;
   border-bottom: 1px solid #cccc;
 `;
 
@@ -58,19 +60,15 @@ export const MenuDescription = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 10px 0;
+  margin-top: 20px;
+  gap: 10px;
   width: 100%;
 `;
 
 export const MenuItemImage = styled.img`
-  width: 150px;
-  height: 150px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
-
-  @media (max-width: 450px) {
-    width: 100px;
-    height: 100px;
-  }
 `;
 
 export const MenuItemName = styled.span`
