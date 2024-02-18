@@ -7,12 +7,10 @@ import {
   BurguerButton,
 } from "../styles/Header";
 import Logo from "../assets/images/Logo.png";
-import { AuthContext } from "../contexts/auth/AuthContext";
 import AccountMenu from "./Mui/AccountMenu";
 
 const Header = () => {
   const [expanded, setExpanded] = useState(false);
-  const { user } = useContext(AuthContext);
 
   return (
     <StyledNavbar expand="lg">
