@@ -4,6 +4,7 @@ import SignIn from "../pages/Login/SignIn";
 import SignUp from "../pages/Login/SignUp";
 import Reservation from "../pages/Resevation";
 import { RequireAuth } from "../contexts/auth/RequireAuth";
+import { BookingHistory } from "../pages/Historic";
 
 export const AppRoutes = () => {
   return (
@@ -16,6 +17,14 @@ export const AppRoutes = () => {
         element={
           <RequireAuth allowedProfiles={["ADMIN", "CLIENT", "EMPLOYEE"]}>
             <Reservation />
+          </RequireAuth>
+        }
+      />
+      <Route
+        path="/historic"
+        element={
+          <RequireAuth allowedProfiles={["ADMIN", "CLIENT", "EMPLOYEE"]}>
+            <BookingHistory />
           </RequireAuth>
         }
       />

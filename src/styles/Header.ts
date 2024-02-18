@@ -11,7 +11,6 @@ export const StyledNavbar = styled(Navbar)`
   z-index: 1000;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 
-
   @media (min-width: 761px) {
     padding: 1rem 5rem;
   }
@@ -21,7 +20,7 @@ export const StyledBrand = styled(Link)`
   margin-right: 0;
 
   @media (min-width: 991px) {
-    margin-right: 56%;
+    margin-right: 70%;
   }
 `;
 
@@ -32,8 +31,8 @@ export const StyledLink = styled(Nav.Link)`
   border-bottom: 2px solid transparent;
   border-left: 2px solid transparent;
   padding-left: 5px;
-  padding-bottom: 15px;
-
+  padding-bottom: 10px;
+  
   &:hover {
     border-left: 2px solid var(--bg-primary);
   }
@@ -61,7 +60,7 @@ export const ButtonContainer = styled.div`
   gap: 5px;
 
   @media (max-width: 991px) {
-   flex-direction: column;
+    flex-direction: column;
   }
 `;
 
@@ -139,4 +138,3 @@ export const Logout = styled.button`
     border: none;
   }
 `;
-
