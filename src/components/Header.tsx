@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { Nav, Navbar } from "react-bootstrap";
 import {
   StyledNavbar,
