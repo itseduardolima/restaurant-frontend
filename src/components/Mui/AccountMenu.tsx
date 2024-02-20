@@ -9,10 +9,11 @@ import Tooltip from "@mui/material/Tooltip";
 import HistoryIcon from "@mui/icons-material/History";
 import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
-import { StyledLink } from "../../styles/Header";
 import { AuthContext } from "../../contexts/auth/AuthContext";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
+import Button from "@mui/material/Button";
 
 const Navigate = styled(Link)`
   text-decoration: none;
@@ -35,14 +36,14 @@ export default function AccountMenu() {
     <React.Fragment>
       <Box>
         <Tooltip title="Minha conta">
-          <StyledLink
+          <Button
             onClick={handleClick}
             aria-controls={open ? "account-menu" : undefined}
             aria-haspopup="true"
             aria-expanded={open ? "true" : undefined}
           >
-            Conta
-          </StyledLink>
+            <MoreVertIcon />
+          </Button>
         </Tooltip>
       </Box>
       <Menu

@@ -16,11 +16,16 @@ export const StyledNavbar = styled(Navbar)`
   }
 `;
 
+export const BtnContainer = styled.div`
+  display: flex;
+  padding: 0;
+`;
+
 export const StyledBrand = styled(Link)`
   margin-right: 0;
 
   @media (min-width: 991px) {
-    margin-right: 70%;
+    margin-right: 75%;
   }
 `;
 
@@ -32,7 +37,7 @@ export const StyledLink = styled(Nav.Link)`
   border-left: 2px solid transparent;
   padding-left: 5px;
   padding-bottom: 10px;
-  
+
   &:hover {
     border-left: 2px solid var(--bg-primary);
   }
@@ -95,6 +100,7 @@ export const StyledButton = styled(Link)`
 
 export const BurguerButton = styled(Navbar.Toggle)`
   border: none;
+  padding: 0;
 
   &:focus {
     box-shadow: none !important;
