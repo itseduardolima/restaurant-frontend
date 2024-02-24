@@ -3,16 +3,21 @@ import styled, { css } from "styled-components";
 
 export const StyledContainer = styled(Container)`
   padding: 20px;
-  padding-top: 10rem;
+  padding-top: 9rem;
 `;
 
 export const Title = styled.h1`
   font-size: 50px;
-  width: 350px;
+  width: 50%;
   font-family: "Handlee", cursive;
   color: #000;
   border-bottom: 3px solid var(--bg-primary);
-  margin-bottom: 20px;
+  margin-bottom: 3rem;
+
+  @media(max-width: 768px) {
+    font-size: 30px;
+    width: 80%;
+  }
 `;
 
 export const TableContainer = styled.div`
@@ -23,7 +28,7 @@ export const TableContainer = styled.div`
   column-gap: 1rem;
   width: 100%;
   align-items: center;
-  padding: 30px 0;
+  padding: 20px 0;
 
   @media (min-width: 768px) {
     grid-template-columns: repeat(4, 1fr);
@@ -31,8 +36,8 @@ export const TableContainer = styled.div`
 `;
 
 export const TableCard = styled.div`
-  padding: 20px;
-  border-radius: 20px;
+  padding: 10px;
+  border-radius: 10px;
   border: 2px solid var(--bg-primary);
 
   > h4 {
@@ -41,7 +46,6 @@ export const TableCard = styled.div`
 `;
 
 export const Section = styled.div`
-  margin-bottom: 10px;
 
   label {
     font-size: 16px;
@@ -86,4 +90,9 @@ export const ReservationBtn = styled.button`
       background-color: #e0e0e0;
       cursor: not-allowed;
     `}
+`;
+
+export const TimeContainer = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
