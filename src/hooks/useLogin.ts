@@ -1,6 +1,8 @@
 import { ChangeEvent, useContext, useState } from "react";
 import { AuthContext } from "../contexts/auth/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { api } from "./api";
+import { toast } from "react-toastify";
 
 export const useLogin = () => {
   const auth = useContext(AuthContext);
@@ -18,6 +20,21 @@ export const useLogin = () => {
     handleLogin();
   };
 
+  const fetchUserInfo = async () => {
+    const token = localStorage.getItem("authToken");
+    try {
+      const response = await api.get("users/me", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      return response.data;
+    } catch (error) {
+      console.error("Erro ao buscar os dados do usuário:", error);
+      return null;
+    }
+  };
+
   const handleLogin = async () => {
     setIsLoggingIn(true);
     const { email, password } = form;
@@ -27,11 +44,20 @@ export const useLogin = () => {
         const isLogged = await auth.signin(email, password);
 
         if (isLogged && isLogged.status) {
-          navigate("/");
+          const userInfo = await fetchUserInfo();
+
+          if (userInfo && userInfo.user_id) {
+            navigate("/");
+          } else {
+            toast.error("Erro ao fazer login. Verifique suas credenciais.");
+          }
         }
       }
     } catch (error) {
-      console.error("Ocorreu um erro durante o login:", error);
+      console.error("An error occurred during login:", error);
+      toast.error(
+        "Ocorreu um erro durante o login. Por favor, tente novamente."
+      );
     } finally {
       setIsLoggingIn(false);
     }

@@ -3,9 +3,11 @@ import { AuthContext } from "./AuthContext";
 import { Payload } from "../../types/Payload";
 import { useApi } from "../../hooks/api";
 import { jwtDecode } from "jwt-decode";
+import { useNavigate } from "react-router-dom";
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<Payload | null>(null);
+  const navigate = useNavigate()
   const api = useApi();
 
   const isTokenExpired = (token: string) => {
@@ -74,6 +76,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const signout = async () => {
     setUser(null);
     clearUserLocalStorage();
+    navigate("/signIn")
     await api.logout();
   };
 
