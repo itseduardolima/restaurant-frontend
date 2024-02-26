@@ -32,6 +32,7 @@ export default function AccountMenu() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  
   return (
     <React.Fragment>
       <Box>
@@ -81,52 +82,46 @@ export default function AccountMenu() {
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
-        {user ? (
-          <>
-            <MenuItem onClick={handleClose}>
-              <Avatar /> Minha conta
-            </MenuItem>
-
-            <Divider />
-
-            <Navigate to="/historic">
-              <MenuItem>
+        {user
+          ? [
+              <MenuItem key="myAccount" onClick={handleClose}>
+                <Avatar /> Minha conta
+              </MenuItem>,
+              <Divider key="divider" />,
+              <Navigate key="historicLink" to="/historic">
+                <MenuItem onClick={handleClose}>
+                  <ListItemIcon>
+                    <HistoryIcon fontSize="small" />
+                  </ListItemIcon>
+                  Minhas reservas
+                </MenuItem>
+              </Navigate>,
+              <MenuItem key="settings" onClick={handleClose}>
                 <ListItemIcon>
-                  <HistoryIcon fontSize="small" />
+                  <Settings fontSize="small" />
                 </ListItemIcon>
-                Minhas reservas
-              </MenuItem>
-            </Navigate>
-
-            <MenuItem onClick={handleClose}>
-              <ListItemIcon>
-                <Settings fontSize="small" />
-              </ListItemIcon>
-              Configurações
-            </MenuItem>
-            <MenuItem onClick={signout}>
-              <ListItemIcon>
-                <Logout fontSize="small" />
-              </ListItemIcon>
-              Sair
-            </MenuItem>
-          </>
-        ) : (
-          <>
-            <Navigate to="/signUp">
-              <MenuItem>
-                <Avatar /> Registre-se
-              </MenuItem>
-            </Navigate>
-            <MenuItem>Já tem uma conta?</MenuItem>
-            <Navigate to="/signIn">
-              <MenuItem>
-                <Avatar />
-                Faça login
-              </MenuItem>
-            </Navigate>
-          </>
-        )}
+                Configurações
+              </MenuItem>,
+              <MenuItem key="signout" onClick={signout}>
+                <ListItemIcon>
+                  <Logout fontSize="small" />
+                </ListItemIcon>
+                Sair
+              </MenuItem>,
+            ]
+          : [
+              <Navigate key="signupLink" to="/signUp">
+                <MenuItem onClick={handleClose}>
+                  <Avatar /> Registre-se
+                </MenuItem>
+              </Navigate>,
+              <MenuItem key="haveAccount">Já tem uma conta?</MenuItem>,
+              <Navigate key="signinLink" to="/signIn">
+                <MenuItem onClick={handleClose}>
+                  <Avatar /> Faça login
+                </MenuItem>
+              </Navigate>,
+            ]}
       </Menu>
     </React.Fragment>
   );
