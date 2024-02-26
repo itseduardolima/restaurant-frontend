@@ -1,4 +1,5 @@
 import { api } from "../../hooks/api";
+import { MetaData } from "../../interface/meta.interface";
 import { IReservation, IReservationById } from "./IReservation";
 
 export async function getReservation() {
@@ -15,8 +16,20 @@ export async function getReservationById(search_userId: string | undefined, page
       sort
     },
   });
-  return { data: response.data as { items: IReservationById[] } };
+
+  if (response.data) {
+    
+    return {
+      data: response.data as { items: IReservationById[] },
+      paginationMeta: {
+        currentPage: response.data.meta.currentPage,
+        totalPages: response.data.meta.totalPages,
+        itemCount: response.data.meta.itemCount,
+      } as MetaData
+    };
+  }
 }
+
 
 export async function getAvailability(date: string, search_capacity: number) {
   const response = await api.get("reservations/availability", {

@@ -13,19 +13,25 @@ import { formatDate } from "../../common/utils/Date";
 import { useDeleteReservation, useListById } from "../../hooks/useReservation";
 import { StyledContainer, Title } from "../../styles/Reservation";
 import { CancelButton, Item } from "../../styles/Historic";
+import { Pagination, Stack } from "@mui/material";
 
 export const BookingHistory = () => {
   
   const { data: userData } = useCurrentUser();
   const search_userId = userData?.user_id;
   const [page, setPage] = useState(1);
-  const [limit] = useState(8);
+  const [limit] = useState(5);
   const [sort] = useState("DESC");
   const { data: bookingData, refetch, isLoading } = useListById(search_userId, page, limit, sort);
 
   const deleteMutation = useDeleteReservation();
   const handleDelete = async (id: string) => {
     await deleteMutation.mutateAsync(id);
+    refetch();
+  };
+
+  const handleChangePage = async ( _event: React.ChangeEvent<unknown>, value: number) => {
+    setPage(value);
     refetch();
   };
 
@@ -84,6 +90,15 @@ export const BookingHistory = () => {
                 ))}
               </TableBody>
             </Table>
+            <Stack style={{ padding: "20px 0", }}>
+              <Pagination
+                count={bookingData.paginationMeta.totalPages}
+                page={page}
+                onChange={handleChangePage}
+                variant="outlined"
+                shape="rounded"
+              />
+            </Stack>
           </TableContainer>
           
         </Paper>
