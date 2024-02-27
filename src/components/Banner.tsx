@@ -3,7 +3,8 @@ import BannerRestaurant from "../assets/images/restaurant-photo.jpg";
 import BannerPizza from "../assets/images/banner-pizza.jpg";
 import BannerBurguer from "../assets/images/banner-burguer.jpg";
 import Carousel from "react-bootstrap/Carousel";
-import { useRef } from "react";
+import {gsap } from "gsap";
+import { useEffect, useRef } from "react";
 import { ReservationBtn } from "../styles/Parallax";
 
 type Props = {
@@ -13,11 +14,29 @@ type Props = {
 const Banner: React.FC<Props> = ({ id }) => {
   const ref = useRef(null);
 
+  useEffect(() => {
+    animateTextAndButton();
+  }, []);
+
+  const animateTextAndButton = () => {
+    gsap.fromTo(
+      ".description",
+      { opacity: 0, y: 100 },
+      { opacity: 1, y: 0, duration: 2, ease: "power3.out", }
+    );
+
+    gsap.fromTo(
+      ".reservation-button",
+      { opacity: 0, y: 100 },
+      { opacity: 1, y: 0, duration: 1, ease: "power3.out", delay: 1 }
+    );
+  };
+
   return (
     <Carousel id={id} ref={ref}>
       <Carousel.Item>
         <StyledBanner src={BannerRestaurant} alt="Banner Restaurant" />
-        <Description>
+        <Description className="description">
           <h1>
             Pérola Lanche <span>&</span> Pizzaria
           </h1>
@@ -25,7 +44,9 @@ const Banner: React.FC<Props> = ({ id }) => {
             Venha conhecer para o nosso Lanche & Pizzaria, onde cada pedaço de
             pizza é uma experiência que vale a pena saborear.
           </p>
-          <ReservationBtn to="/reservation">Reservar uma mesa</ReservationBtn>
+          <ReservationBtn to="/reservation" className="reservation-button">
+            Reservar uma mesa
+          </ReservationBtn>
         </Description>
       </Carousel.Item>
 

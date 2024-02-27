@@ -11,7 +11,7 @@ export const StyledBanner = styled.img`
 export const Description = styled.div`
   gap: 20px;
   position: absolute;
-  top: 50%;
+  top: 35%;
   left: 40%;
   transform: translate(-50%, -50%);
   display: flex;
