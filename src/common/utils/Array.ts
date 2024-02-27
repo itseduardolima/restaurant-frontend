@@ -11,7 +11,7 @@ import Gourmet from "../../assets/images/hamburgues/gourmet.jpg";
 import Vegetariano from "../../assets/images/hamburgues/vegetariano.jpg";
 
 export const menuData = {
-  categories: ["TODOS", "PIZZA", "BURGUER"],
+  categories: ["PIZZA", "BURGUER"],
   items: [
     {
       imageSrc: Pepperoni,

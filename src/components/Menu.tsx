@@ -1,4 +1,5 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
+import { gsap } from "gsap";
 import {
   CardContainer,
   CategoryButton,
@@ -19,15 +20,20 @@ type MenuProps = {
 };
 
 const Menu: React.FC<MenuProps> = ({ id }) => {
-  const [selectedCategory, setSelectedCategory] = useState("TODOS");
+  const [selectedCategory, setSelectedCategory] = useState("PIZZA");
   const filteredItems = menuData.items.filter(
-    (item) =>
-      !selectedCategory ||
-      item.category === selectedCategory ||
-      selectedCategory === "TODOS"
+    (item) => !selectedCategory || item.category === selectedCategory
   );
-
   const ref = useRef(null);
+
+  useEffect(() => {
+    gsap.from(".menu-card", {
+      opacity: 1,
+      y: 100,
+      stagger: 0.1,
+      duration: 1,
+    });
+  }, [filteredItems]);
 
   return (
     <StyledContainer id={id} ref={ref}>
@@ -43,9 +49,10 @@ const Menu: React.FC<MenuProps> = ({ id }) => {
           </CategoryButton>
         ))}
       </CategoryContainer>
+
       <CardContainer>
         {filteredItems.map((item) => (
-          <MenuCard key={item.name}>
+          <MenuCard key={item.name} className="menu-card">
             <MenuItemImage src={item.imageSrc} alt={item.name} />
             <MenuDescription>
               <MenuItemName>{item.name}</MenuItemName>
