@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const StyledNavbar = styled(Navbar)`
-  background-color: white;
+  background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
   padding: 10px;
   position: fixed;
   width: 100%;
