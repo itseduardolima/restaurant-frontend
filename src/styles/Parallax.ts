@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const Container = styled.div`
-  padding: 5rem 0;
+  padding: 0;
 `;
 
 export const StyledParallax = styled(Parallax)`
