@@ -10,8 +10,8 @@ Reserva de Mesas: Os usuários podem visualizar a disponibilidade de mesas em te
 
 ## 🚀 Tecnologias Utilizadas
 
-Frontend: TypeScript, Reactjs
-Backend: Node.js, Nestjs
+Frontend: TypeScript, Reactjs <br>
+Backend: Node.js, Nestjs <br>
 Banco de Dados: Mysql
 
 ## 🖥️ Installation
