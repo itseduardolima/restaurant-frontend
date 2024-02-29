@@ -1,15 +1,12 @@
 import { useEffect, useState } from "react";
 import SignIn from "../../pages/Login/SignIn";
-import Home from "../../pages/Home";
+import Unauthorized from "../../pages/Unauthorized";
 
-
-export const RequireAuth = ({
-  children,
-  allowedProfiles = [],
-}: {
+export const RequireAuth = ({ children, allowedProfiles = [] }: {
   children: JSX.Element;
   allowedProfiles?: string[];
 }) => {
+  
   const [loading, setLoading] = useState(true);
   const [userProfile, setUserProfile] = useState<string | null>(null);
 
@@ -28,7 +25,7 @@ export const RequireAuth = ({
   }
 
   if (allowedProfiles.length && !allowedProfiles.includes(userProfile)) {
-    return <Home />;
+    return <Unauthorized />;
   }
 
   return children;
