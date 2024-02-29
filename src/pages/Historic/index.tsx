@@ -14,6 +14,7 @@ import { useDeleteReservation, useListById } from "../../hooks/useReservation";
 import { StyledContainer, Title } from "../../styles/Reservation";
 import { CancelButton, Item } from "../../styles/Historic";
 import { Pagination, Stack } from "@mui/material";
+import Loader from "../../components/Mui/Loader";
 
 export const BookingHistory = () => {
   
@@ -42,7 +43,7 @@ export const BookingHistory = () => {
   }, [search_userId, page, limit, refetch]);
 
   if (isLoading) {
-    return <p>Carregando...</p>;
+    return <Loader />
   }
 
   if (!bookingData) {

@@ -1,36 +1,21 @@
 import React, { useEffect, useState } from "react";
-import {
-  useCreateReservation,
-  useListAvailability,
-} from "../../hooks/useReservation";
+import { useCreateReservation, useListAvailability } from "../../hooks/useReservation";
 import { useCurrentUser } from "../../hooks/useCurrentUser";
-import {
-  ReservationBtn,
-  Section,
-  StyledContainer,
-  TableCard,
-  TableContainer,
-  Title,
-} from "../../styles/Reservation";
+import { ReservationBtn, Section, StyledContainer, TableCard, TableContainer, Title} from "../../styles/Reservation";
 import { IAvailability } from "../../services/Reservation/IReservation";
 import { formatDateTime } from "../../common/utils/Date";
 import { Table } from "../../services/Tables/ITables";
 import Header from "../../components/Header";
+import Loader from "../../components/Mui/Loader";
 
 const Reservation = () => {
   const mutateReservation = useCreateReservation();
 
-  const [date, setDate] = useState<string>(
-    new Date().toISOString().slice(0, 10)
-  );
+  const [date, setDate] = useState<string>(new Date().toISOString().slice(0, 10));
   const [search_capacity, setSearch_capacity] = useState<number>(2);
 
   const { data: userData } = useCurrentUser();
-  const {
-    data: availabilityData,
-    isLoading,
-    refetch,
-  } = useListAvailability(date, search_capacity);
+  const { data: availabilityData, isLoading, refetch} = useListAvailability(date, search_capacity);
 
   useEffect(() => {
     refetch();
@@ -42,9 +27,7 @@ const Reservation = () => {
     setDate(formattedDate);
   };
 
-  const handleCapacitySelection = (
-    event: React.ChangeEvent<HTMLSelectElement>
-  ) => {
+  const handleCapacitySelection = ( event: React.ChangeEvent<HTMLSelectElement> ) => {
     const capacity = parseInt(event.target.value);
     setSearch_capacity(capacity);
   };
@@ -61,6 +44,10 @@ const Reservation = () => {
       mutateReservation.mutate(reservationData);
     }
   };
+
+  if (isLoading) {
+    return <Loader />
+  }
 
   return (
     <>
@@ -92,10 +79,7 @@ const Reservation = () => {
         </Section>
         <div>
           <h3 style={{ marginBottom: "20px" }}>Mesas disponíves:</h3>
-          {isLoading ? (
-            <p>Carregando...</p>
-          ) : (
-            availabilityData?.map((availability: IAvailability) => (
+          {availabilityData?.map((availability: IAvailability) => (
               <div key={availability.time}>
                 <h4>{formatDateTime(availability.time)}</h4>
                 <TableContainer>
@@ -120,7 +104,7 @@ const Reservation = () => {
                 </TableContainer>
               </div>
             ))
-          )}
+          }
         </div>
       </StyledContainer>
     </>
